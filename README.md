@@ -1,6 +1,6 @@
 # rago-web
 
-React frontend for [rago](../rago) — a local RAG (Retrieval-Augmented Generation) application. Upload PDF and TXT files into a knowledge base, then chat with your documents using a locally-running LLM via LM Studio.
+React frontend for [rago](https://github.com/bondhan/rago) — a local RAG (Retrieval-Augmented Generation) application. Upload PDF and TXT files into a knowledge base, then chat with your documents using a locally-running LLM via LM Studio.
 
 ---
 
