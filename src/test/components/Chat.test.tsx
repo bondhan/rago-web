@@ -75,8 +75,7 @@ describe('Chat', () => {
     expect(mockChat).not.toHaveBeenCalled()
   })
 
-  it('does not send empty-only whitespace input', async () => {
-    const user = userEvent.setup()
+  it('does not send empty-only whitespace input', () => {
     render(<Chat />)
 
     // type spaces only — button stays disabled, Enter should not fire

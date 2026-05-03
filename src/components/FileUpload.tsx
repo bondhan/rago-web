@@ -10,7 +10,11 @@ interface UploadedFile {
   error?: string
 }
 
-export default function FileUpload() {
+interface Props {
+  onUploaded?: () => void
+}
+
+export default function FileUpload({ onUploaded }: Props) {
   const [files, setFiles] = useState<UploadedFile[]>([])
   const [dragging, setDragging] = useState(false)
   const [lastResult, setLastResult] = useState<UploadResponse | null>(null)
@@ -40,6 +44,7 @@ export default function FileUpload() {
       const result = await uploadFiles(raw)
       logger.info('upload done', result)
       setLastResult(result)
+      onUploaded?.()
       setFiles((prev) =>
         prev.map((f) =>
           raw.some((r) => r.name === f.name) ? { ...f, status: 'done' } : f,

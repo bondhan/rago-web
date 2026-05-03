@@ -6,10 +6,17 @@ import * as clientModule from '../api/client'
 
 // Stub out child components so we test App in isolation.
 vi.mock('../components/FileUpload', () => ({
-  default: () => <div data-testid="file-upload" />,
+  default: ({ onUploaded }: { onUploaded?: () => void }) => (
+    <div data-testid="file-upload" onClick={onUploaded} />
+  ),
 }))
 vi.mock('../components/Chat', () => ({
   default: () => <div data-testid="chat" />,
+}))
+vi.mock('../components/UploadHistory', () => ({
+  default: ({ refreshKey }: { refreshKey: number }) => (
+    <div data-testid="upload-history" data-refresh={refreshKey} />
+  ),
 }))
 vi.mock('../api/client')
 
@@ -34,6 +41,17 @@ describe('App', () => {
   it('shows Reset KB button in the header', () => {
     render(<App />)
     expect(screen.getByRole('button', { name: 'Reset KB' })).toBeInTheDocument()
+  })
+
+  it('increments UploadHistory refreshKey when FileUpload calls onUploaded', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    const history = screen.getByTestId('upload-history')
+    expect(history).toHaveAttribute('data-refresh', '0')
+
+    // Clicking the stub FileUpload fires onUploaded
+    await user.click(screen.getByTestId('file-upload'))
+    expect(history).toHaveAttribute('data-refresh', '1')
   })
 
   it('shows success message after successful reset', async () => {

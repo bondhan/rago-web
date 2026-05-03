@@ -6,10 +6,7 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      '/upload': 'http://localhost:8080',
-      '/query': 'http://localhost:8080',
       '/v1': 'http://localhost:8080',
-      '/ingest': 'http://localhost:8080',
     },
   },
 })

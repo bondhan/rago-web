@@ -15,7 +15,7 @@ describe('logger', () => {
   })
 
   it('default WARN level: suppresses debug and info, passes warn and error', () => {
-    // No VITE_LOG_LEVEL set → falls back to WARN
+    vi.stubEnv('VITE_LOG_LEVEL', 'WARN')
     logger.debug('d')
     logger.info('i')
     logger.warn('w')

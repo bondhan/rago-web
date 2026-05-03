@@ -1,0 +1,98 @@
+.upload-history {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upload-history-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.upload-history-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.upload-history-count {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.upload-history-empty,
+.upload-history-loading {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  padding: 6px 0;
+}
+
+.upload-history-error {
+  font-size: 0.82rem;
+  color: var(--error);
+}
+
+.history-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.history-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.history-item-name {
+  font-size: 0.85rem;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.history-item-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.history-size {
+  font-variant-numeric: tabular-nums;
+}
+
+.history-date {
+  font-variant-numeric: tabular-nums;
+}
+
+.btn-show-more {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--accent);
+  padding: 7px 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: background 0.2s, border-color 0.2s;
+  align-self: flex-start;
+}
+
+.btn-show-more:hover:not(:disabled) {
+  background: rgba(108, 99, 255, 0.08);
+  border-color: var(--accent);
+}
+
+.btn-show-more:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
